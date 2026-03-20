@@ -54,28 +54,67 @@ function CountUp({ target, suffix }: { target: number; suffix: string }) {
 
 export default function Stats() {
   return (
-    <section className="py-section bg-surface-raised">
-      <div className="max-w-7xl mx-auto px-6">
-        <AnimateIn className="text-center mb-12">
-          <h2 className="font-heading font-black text-display-lg text-content-primary mb-3">
-            Trusted by Thousands
+    <section className="relative py-section overflow-hidden bg-[#f8fafc]">
+      {/* Ambient glow orb */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-brand-500/10 blur-[180px] pointer-events-none" />
+      
+      {/* Dot grid texture */}
+      <div className="absolute inset-0 opacity-[0.4]" 
+           style={{
+             backgroundImage: 'radial-gradient(circle, rgba(59, 130, 246, 0.15) 1px, transparent 1px)',
+             backgroundSize: '32px 32px',
+           }} />
+      
+      {/* Border accent top */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-500/30 to-transparent" />
+      
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <AnimateIn className="text-center mb-16">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-500/10 text-brand-600 text-sm font-semibold mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-brand-500 animate-pulse" />
+            Powering Growth
+          </span>
+          <h2 className="font-heading font-black text-display-xl text-content-primary mb-4 tracking-tight">
+            Trusted by{' '}
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-brand-500 to-violet-500">
+              Thousands
+            </span>
           </h2>
-          <p className="text-content-secondary text-lg max-w-xl mx-auto">
+          <p className="text-content-secondary text-xl max-w-xl mx-auto font-light">
             Shortcut Finance powers financial operations for individuals and businesses across the region
           </p>
         </AnimateIn>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {stats.map((stat, i) => (
             <AnimateIn key={stat.label} delay={i * 100} className="text-center group">
-              <div className="relative inline-block">
-                <div className="absolute inset-0 bg-brand-500/20 blur-2xl rounded-full scale-75 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="relative font-heading font-black text-display-md text-brand-500 mb-2">
-                  <CountUp target={stat.value} suffix={stat.suffix} />
+              <div className="relative p-6 rounded-2xl border border-surface-overlay bg-surface-raised hover:border-brand-500/30 hover:shadow-lg hover:shadow-brand-500/10 transition-all duration-300">
+                {/* Top accent line */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-0.5 bg-gradient-to-r from-transparent via-brand-500 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                
+                {/* Number glow on hover */}
+                <div className="absolute inset-0 bg-brand-500/0 group-hover:bg-brand-500/5 rounded-2xl transition-colors duration-300" />
+                
+                <div className="relative">
+                  <div className="font-heading font-black text-[clamp(2.5rem,5vw,3.5rem)] leading-[1] mb-3 tracking-tight">
+                    <span className="bg-clip-text text-transparent bg-gradient-to-br from-brand-500 to-brand-600">
+                      <CountUp target={stat.value} suffix={stat.suffix} />
+                    </span>
+                  </div>
+                  <div className="text-sm text-content-secondary font-medium">{stat.label}</div>
                 </div>
               </div>
-              <div className="text-sm text-content-secondary font-medium">{stat.label}</div>
             </AnimateIn>
           ))}
+        </div>
+        
+        {/* Bottom decorative element */}
+        <div className="mt-16 flex justify-center">
+          <div className="flex items-center gap-2 text-content-muted text-sm">
+            <span className="w-8 h-px bg-gradient-to-r from-transparent to-brand-500/50" />
+            <span>Growing every day</span>
+            <span className="w-8 h-px bg-gradient-to-l from-transparent to-brand-500/50" />
+          </div>
         </div>
       </div>
     </section>
