@@ -1,5 +1,4 @@
 import AnimateIn from '@/components/ui/AnimateIn'
-import { cn } from '@/lib/utils'
 
 // Trust signals - fintech companies and businesses
 const trustSignals = [
@@ -115,7 +114,7 @@ export default function SocialProof() {
         {/* Testimonials Grid with improved styling */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {testimonials.map((t, i) => (
-            <AnimateIn key={i} delay={i * 150} animation="fade-up">
+            <AnimateIn key={i} delay={i * 150} direction="up">
               <div className="relative h-full p-8 rounded-card-lg bg-white border border-surface-border hover:border-brand-500/40 hover:shadow-xl hover:shadow-brand-500/5 transition-all duration-300 overflow-hidden group">
                 {/* Hover glow effect */}
                 <div className="absolute inset-0 bg-brand-500/0 group-hover:bg-brand-500/[0.02] transition-colors duration-500" />

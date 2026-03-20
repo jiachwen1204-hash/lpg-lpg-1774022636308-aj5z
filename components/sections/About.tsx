@@ -40,7 +40,7 @@ export default function About() {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Visual Side */}
-          <AnimateIn direction="left" animation="fade-in">
+          <AnimateIn direction="left">
             <div className="relative">
               {/* Main card */}
               <div className="relative aspect-square max-w-lg mx-auto lg:mx-0">
@@ -96,7 +96,7 @@ export default function About() {
           </AnimateIn>
 
           {/* Content Side */}
-          <AnimateIn direction="right" delay={100} animation="fade-in">
+          <AnimateIn direction="right" delay={100}>
             <p className="text-sm font-semibold tracking-widest uppercase text-brand-500 mb-3">
               {CONTENT.label}
             </p>
@@ -140,7 +140,7 @@ export default function About() {
         </div>
 
         {/* Bottom info strip */}
-        <AnimateIn direction="up" delay={200} animation="fade-in">
+        <AnimateIn direction="up" delay={200}>
           <div className="mt-20 pt-10 border-t border-surface-border">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
               <div>
