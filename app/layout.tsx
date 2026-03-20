@@ -17,14 +17,17 @@ const bodyFont = Nunito({
 })
 
 export const metadata: Metadata = {
-  title: 'Landing Page',
-  description: 'Generated landing page',
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'),
+  title: "Shortcut Finance",
+  description: "Shortcut Finance is a fintech company that simplifies financial services through smart technology and seamless digital solutions. We help individuals and b",
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${headingFont.variable} ${bodyFont.variable}`}>
-      <body>{children}</body>
+      <body>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: `{"@context":"https://schema.org","@type":"Organization","name":"Shortcut Finance","description":"Shortcut Finance is a fintech company that simplifies financial services through smart technology and seamless digital solutions. We help individuals and businesses manage payments, access financing, and handle financial operations faster and more efficiently — removing complexity and creating a smoother path to financial success.","email":"jiachwen99@gmail.com","address":"B5-1-3, Forest Green Condominium, Bandar Sungai Long"}` }} />
+      {children}</body>
     </html>
   )
 }
